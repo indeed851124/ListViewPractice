@@ -2,6 +2,7 @@ package com.cnc.listviewpractice
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.cnc.listviewpractice.adapters.StudentAdapter
 import com.cnc.listviewpractice.databinding.ActivityMainBinding
 import com.cnc.listviewpractice.datas.Student
@@ -33,5 +34,12 @@ class MainActivity : AppCompatActivity() {
         mAdapter = StudentAdapter(this, R.layout.student_list_item, mStudentList)
 
         binding.studentListView.adapter = mAdapter
+
+        binding.studentListView.setOnItemClickListener { parent, view, position, id ->  
+            val clickedStudent = mStudentList[position]
+
+            Toast.makeText(this, "${clickedStudent.name}이 클릭됨", Toast.LENGTH_SHORT).show()
+            
+        }
     }
 }
